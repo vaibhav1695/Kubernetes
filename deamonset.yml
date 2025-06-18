@@ -1,0 +1,21 @@
+
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: nginx-deamonset
+  namespace: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: nginx-daemon
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
