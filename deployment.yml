@@ -1,0 +1,32 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-deployment
+  namespace: oracle
+  labels:
+    app: oracle
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: oracle
+  template:
+    metadata:
+      labels:
+        app: oracle
+    spec:
+      containers:
+        - name: oracle
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: my-volume
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: oracle-pvc
+
