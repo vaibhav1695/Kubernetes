@@ -1,0 +1,38 @@
+mkdir stage 
+  855  cd stage 
+  856  ls
+  857  vim deployment.yml
+  858  ls
+  859  vim pv.yml
+  860  vim pvc.yml
+  861  ls
+  862  vim deployment.yml 
+  863  k get pods
+  864  k create -f deployment.yml l
+  865  k create -f deployment.yml 
+  866  k edit deployment.yml 
+  867  k edit -f deployment.yml 
+  868  vim  deployment.yml 
+  869  k create -f deployment.yml 
+  870  k create ns db
+  871  k get ns
+  872  k create -f deployment.yml 
+  873  vim deployment.yml 
+  874  vim pv.yml 
+  875  vim pvc.yml 
+  876  k create -f deployment.yml 
+  877  vim deployment.yml 
+  878  k create -f deployment.yml 
+  879  vim deployment.yml 
+  880  vim create -f pv.yml 
+  881  ls
+  882  k create -f pv.yml 
+  883  k create -f pvc.yml 
+  884  k create -f deployment.yml 
+  885  vim deployment.yml 
+  886  k create -f deployment.yml 
+  887  k get pods -n db
+  888  k get pv -n db
+  889  k get pvc -n db
+  890  git status 
+  891  git init
