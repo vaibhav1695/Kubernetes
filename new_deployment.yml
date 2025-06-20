@@ -1,0 +1,33 @@
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dev-deployment
+  namespace: vaibhav
+  labels:
+    app: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dev
+  template:
+    metadata:
+      name: dev-devployment
+      labels:
+        app: dev
+    spec:
+      containers:
+        - name: dev-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: dev-volume
+      volumes:
+       - name: dev-volume
+         persistentVolumeClaim:
+           claimName: dev-pvc
+

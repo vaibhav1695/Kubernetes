@@ -1,0 +1,17 @@
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+   name: dev-pv
+   namespace: vaibhav
+   #lables:
+   #  app: dev
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+          - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: example
+  hostPath:
+          path: /mnt/data  
