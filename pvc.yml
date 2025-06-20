@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: oracle-pvc
-  namespace: oracle
+  namespace: nginx
 spec:
   accessModes:
     - ReadWriteOnce

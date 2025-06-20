@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oracle-deployment
-  namespace: oracle
+  namespace: nginx
   labels:
     app: oracle
 spec:
