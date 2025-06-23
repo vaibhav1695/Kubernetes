@@ -1,0 +1,51 @@
+
+
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: nginx-statefulset
+  namespace: nginx
+spec:
+  replicas: 3 
+  serviceName: nginx-service  
+  selector:
+    matchLabels:
+      app: mysql 
+  template:
+    metadata:
+      labels:
+        app: mysql  
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: my-data
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_DATABASE_PASSWORD
+              valueFrom:
+                 secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
+
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:      
+                 name: mysql-config-map       #config map file name
+                 key: MYSQL_DATABASE           # config map data key name      
+
+  volumeClaimTemplates:
+    - metadata:
+        name: my-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+

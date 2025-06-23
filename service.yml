@@ -1,0 +1,17 @@
+
+kind: Service
+apiVersion: v1
+metadata: 
+   name: nginx-service
+   namespace: nginx
+spec:
+    clusterIP: None
+    selector:
+            labels: 
+            app: mysql
+
+    ports:
+     - name: mysql 
+       port: 3306
+       protocol: TCP
+       targetPort: 3306       
