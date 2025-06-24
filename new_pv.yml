@@ -3,7 +3,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
    name: dev-pv
-   namespace: vaibhav
+   namespace: nginx 
    #lables:
    #  app: dev
 spec:

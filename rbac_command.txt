@@ -1,0 +1,75 @@
+
+cmmand RBAC:
+
+root@7093aa86572c:/home/test# k auth whoami 
+ATTRIBUTE   VALUE
+Username    kubernetes-admin
+Groups      [kubeadm:cluster-admins system:authenticated]
+root@7093aa86572c:/home/test# 
+root@7093aa86572c:/home/test# k auth can-i delete pod 
+yes
+root@7093aa86572c:/home/test# k auth can-i get  pod 
+yes
+root@7093aa86572c:/home/test# k auth can-i get pods -n nginx 
+yes
+root@7093aa86572c:/home/test# 
+
+ mkdir rbac
+ >> cd rbac/
+ 
+ >> vim role.yml
+ >> k apply -f role.yml 
+ >> vim role.yml
+ >> k apply -f role.yml 
+ >> vim role.yml
+ >> k apply -f role.yml 
+ >> k get role -n nginx 
+ >> k describe role nginx-manager -n nginx 
+ >> vim service-account.yml
+ >> k apply -f service-account.yml 
+ >> k get serviceaccount -n nginx 
+ >> k describe serviceaccount nginx-user -n ngin x
+ >> k describe serviceaccount nginx-user -n nginx
+ >> k auth can-i get pods -n nginx 
+ >> k auth can-i get pods -n nginx --as=nginx-user 
+ >> k auth can-i get pods -n nginx --as=nginx-user -n nginx 
+ >> vim rolebinding.yml
+ >> k apply -f role
+ >> k apply -f rolebinding.yml 
+ >> vim rolebinding.yml 
+ >> k apply -f rolebinding.yml 
+ >> vim rolebinding.yml 
+ >> k apply -f rolebinding.yml 
+ >> vim rolebinding.yml 
+ >> k apply -f rolebinding.yml 
+ >> k get rolebinding -n nginx 
+ >> k describe rolebinding nginx-manager-rolebinding -n nginx 
+ >> k describe serviceaccount nginx-user -n nginx
+ >> k describe role nginx-manager -n nginx 
+ >> k get rolebinding -n nginx 
+ >> k auth can-i get pods -n nginx --as=nginx-user
+ >> k auth can-i get pods -n nginx --as=nginx-user -n nginx 
+ >> k auth can-i get pods --as=nginx-user -n nginx 
+ >> ls
+ >> rm 1
+ >> vim role
+ >> vim role.yml 
+ >> k apply -f role.yml 
+ >> k auth can-i get pods --as=nginx-user -n nginx 
+ >> vim role.yml 
+ >> k apply -f role.yml 
+ >> k auth can-i get pods --as=nginx-user -n nginx 
+ >> vim role.yml 
+ >> k apply -f role.yml 
+ >> k auth can-i get pods --as=nginx-user -n nginx 
+ >> k auth can-i get deployment --as=nginx-user -n nginx 
+ >> k auth can-i get service --as=nginx-user -n nginx 
+ >> vim role.yml 
+ >> k apply -f role.yml 
+ >> k auth can-i get service --as=nginx-user -n nginx 
+ >> vim role.yml 
+ >> k apply -f role.yml 
+ >> k auth can-i get service --as=nginx-user -n nginx 
+ >> k auth can-i delete deployment --as=nginx-user -n nginx 
+
+

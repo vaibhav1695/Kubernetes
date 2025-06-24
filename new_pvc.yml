@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata: 
    name: dev-pvc
-   namespace: vaibhav
+   namespace: nginx 
 
 spec:
    accessModes:

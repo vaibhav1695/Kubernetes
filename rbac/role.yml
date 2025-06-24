@@ -1,0 +1,12 @@
+
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+     name: nginx-manager
+     namespace: nginx 
+
+rules:
+    - apiGroups: ["","apps","rbac.authorization.k8s.io","batch"]
+      resources: ["pods","deployments", "services" ] #"deployment","pod", "services"]
+      verbs: ["get"] #"get", "delete", "apply" ,"create"]
