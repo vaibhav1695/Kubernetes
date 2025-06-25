@@ -1,0 +1,35 @@
+
+
+install Helm :
+>> curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+
+>> chmod 700 get_helm.sh   --> changed the permission of file 
+>> ./get_helm.sh          ---> install helm-
+>> ls
+>> helm version 
+>> helm create nginx-helm   -- create helm chart with the application name 
+>> ls
+>> cd nginx-helm/
+>> vim values.yaml     ---> change the configration as per requirement
+
+>> helm package nginx-helm/   --> package all the configration
+>> cd ..
+ 
+>> helm install dev-nginx  nginx-helm-0.1.0.tgz -n nginx   --> install the helm configration 
+>> alias k="kubectl"
+>> k get all -n nginx 
+>> helm uninstall dev-nginx -n nginx   ---> delete/ uninstall configration 
+ 
+>> helm install dev-nginx nginx-helm -n dev-nginx --create-namespace   --> install the configartion with new namespace create 
+
+>> cd nginx-helm/
+>> vim values.yaml       ---> change the configratiion for upgrade the application 
+
+>> vim /nginx-helm/Chart.yml   ---> change the Chart.yml file version 
+
+>> vim Chart.yaml 
+>> helm upgrade dev-nginx ./nginx-helm -n dev-nginx   --> upgarde the application 
+
+>> k get pods -n dev-nginx 
+>> helm rollback dev-nginx 1 -n dev-nginx    ---> rollback to previous version just mentioned the version number
+>> k get pods -n dev-nginx 
